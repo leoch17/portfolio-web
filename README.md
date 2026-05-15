@@ -4,7 +4,7 @@
 
 ¡Bienvenido a mi rincón en GitHub! Este proyecto es mi carta de presentación, donde combino mi experiencia en Ingeniería de Computación con el desarrollo fullstack, enfocado en rendimiento y diseño moderno.
 
-[🔗 Ver Portafolio en Vivo](https://leoch17.github.io/portfolio-web/)
+[🔗 Ver Portafolio en Vivo](https://portfolio-web-leonardo-chourio.vercel.app/)
 
 ## 🛠️ Stack Tecnológico
 
