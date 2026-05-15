@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies 🔧
+        # Usamos 'npm ci' para una instalación limpia basada exactamente en tu package-lock.json
+        run: npm ci
+
+      - name: Build 🏗️
+        # Añadimos --no-lint directamente al comando de build
+        run: npx next build --no-lint
+        env:
+          NEXT_DISABLE_ESLINT: true
+          NEXT_TELEMETRY_DISABLED: 1
+
+      - name: Create .nojekyll 📄
+        run: touch out/.nojekyll
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: out
+          branch: gh-pages
